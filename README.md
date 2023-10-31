@@ -88,8 +88,17 @@ Pastikan kamu memiliki aplikasi-aplikasi berikut untuk dapat memanfaatkan plugin
    git clone https://github.com/idoalit/slims-dts-islam.git
    ```
 2. Ekstrak dan pindahkan hasil ekstrak / clone ke folder `plugins` pada SLiMS kamu
-3. Masuk pustakawan sebagai Administrator (user_id `1`)
-4. Aktifkan plugin pada menu Sistem > Plugins
+
+3. Jalankan `composer install` via terminal
+    ```sh
+    # masuk ke folder plugin dts islam
+    cd slims9_bulian/plugins/slims-dts-islam
+    
+    # jalankan composer install
+    composer install
+    ```
+4. Masuk pustakawan sebagai Administrator (user_id `1`)
+5. Aktifkan plugin pada menu Sistem > Plugins
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
