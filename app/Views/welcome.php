@@ -28,7 +28,7 @@
             <h2><?= __('DTS Islam'); ?></h2>
         </div>
         <div class="infoBox">
-            <?= __('Daftar tajuk subjek Islam'); ?>
+            <?= __('Daftar Tajuk Subjek Islam dan Klasifikasi Islam'); ?>
         </div>
         <div class="sub_section">
             <div class="btn-group">
