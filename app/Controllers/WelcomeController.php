@@ -37,4 +37,8 @@ class WelcomeController
         View::load('welcome', ['topic_count' => $topic_count, 'relation_count' => $relation_count, 'topic_related_count' => $topic_related_count]);
     }
 
+    function credits() {
+        View::load('credits');
+    }
+
 }

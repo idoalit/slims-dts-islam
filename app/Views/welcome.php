@@ -20,6 +20,9 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
  */
+
+use DTSIslam\Lib\Url;
+
 ?>
 
 <div class="menuBox">
@@ -32,10 +35,10 @@
         </div>
         <div class="sub_section">
             <div class="btn-group">
-                <a href="<?= $_SERVER['PHP_SELF']; ?>" class="btn btn-primary"><?= __('Merge subject'); ?></a>
-                <a href="<?= $_SERVER['PHP_SELF']; ?>" class="btn btn-success"><?= __('Use DTS Islam'); ?></a>
-                <a href="<?= $_SERVER['PHP_SELF']; ?>" class="btn btn-danger"><?= __('Drop DTS Islam'); ?></a>
-                <a href="<?= $_SERVER['PHP_SELF']; ?>" class="btn btn-info"><?= __('Credits'); ?></a>
+                <a href="<?= Url::adminSection('/merge'); ?>" class="btn btn-primary"><?= __('Merge subject'); ?></a>
+                <a href="<?= Url::adminSection('/use'); ?>" class="btn btn-success"><?= __('Use DTS Islam'); ?></a>
+                <a href="<?= Url::adminSection('/drop'); ?>" class="btn btn-danger"><?= __('Drop DTS Islam'); ?></a>
+                <a href="<?= Url::adminSection('/credits'); ?>" class="btn btn-info"><?= __('Credits'); ?></a>
             </div>
         </div>
     </div>

@@ -20,6 +20,7 @@
  *
  */
 
+use DTSIslam\App\Controllers\SubjectController;
 use DTSIslam\App\Controllers\WelcomeController;
 
 // create new router instance
@@ -27,6 +28,10 @@ $router = new \DTSIslam\Lib\Router();
 
 // register routes
 $router->get('/', [WelcomeController::class, 'index']);
+$router->get('/merge', [SubjectController::class, 'merge']);
+$router->get('/use', [SubjectController::class, 'use']);
+$router->get('/drop', [SubjectController::class, 'drop']);
+$router->get('/credits', [WelcomeController::class, 'credits']);
 
 // run router
 $router->run();
