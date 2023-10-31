@@ -29,6 +29,9 @@ $router = new \DTSIslam\Lib\Router();
 // register routes
 $router->get('/', [WelcomeController::class, 'index']);
 $router->get('/merge', [SubjectController::class, 'merge']);
+$router->get('/topic/count', [SubjectController::class, 'topicCount']);
+$router->post('/topic/doMerge', [SubjectController::class, 'doMerge']);
+
 $router->get('/use', [SubjectController::class, 'use']);
 $router->get('/drop', [SubjectController::class, 'drop']);
 $router->get('/credits', [WelcomeController::class, 'credits']);

@@ -2,6 +2,7 @@
 
 namespace DTSIslam\App\Controllers;
 
+use DTSIslam\App\Models\TmpTopic;
 use DTSIslam\App\Views\View;
 
 class SubjectController
@@ -9,8 +10,17 @@ class SubjectController
     function merge()
     {
         $title = __('Merge - DTS Islam');
-        $description = __('Menu ini untuk menggabungkan DTS Islam dengan subjek-subjek di database');
+        $description = __('Menu ini untuk menggabungkan DTS Islam dengan subjek kamu saat ini');
         View::load('merge', ['title' => $title, 'description' => $description]);
+    }
+
+    function topicCount() {
+        header('Content-type: application/json');
+        echo json_encode(['data' => TmpTopic::count()]);
+    }
+
+    function doMerge() {
+        sleep(1);
     }
 
     function use()
