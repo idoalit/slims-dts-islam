@@ -50,7 +50,8 @@ include __DIR__ . '/header.php';
                         perbatch: perBatch
                     })
                 })
-                const r = await m.text()
+                const r = await m.json()
+                console.log(r)
                 $('.progress-bar').css('width', ((b/batch)*100) + '%')
             }
 
