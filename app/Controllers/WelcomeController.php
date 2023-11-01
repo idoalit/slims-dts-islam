@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @Created by          : Waris Agung Widodo (ido.alit@gmail.com)
  * @Date                : 26/06/2021 1:07
@@ -29,16 +30,35 @@ use DTSIslam\App\Views\View;
 class WelcomeController
 {
 
-    function index() {
+    function index()
+    {
         $topic_count = TmpTopic::count();
         $relation_count = TmpVocabularyControl::count();
         $topic_related_count = TmpTopic::join('tmp_voc_ctrl', 'tmp_voc_ctrl.topic_id', '=', 'tmp_topic.topic_id')
             ->whereNotNull('related_topic_id')->where('related_topic_id', '!=', '')->count();
-        View::load('welcome', ['topic_count' => $topic_count, 'relation_count' => $relation_count, 'topic_related_count' => $topic_related_count]);
+
+        $title = __('DTS Islam');
+        $description = __('Daftar Tajuk Subjek Islam dan Klasifikasi Islam');
+
+        View::load(
+            'welcome',
+            [
+                'topic_count' => $topic_count,
+                'relation_count' => $relation_count, 
+                'topic_related_count' => $topic_related_count, 
+                'title' => $title, 
+                'description' => $description
+            ]
+        );
     }
 
-    function credits() {
-        View::load('credits');
+    function credits()
+    {
+        $title = __('Credits - DTS Islam');
+        $description = __('Berikut ini mereka-mereka yang telah berkontribusi dalam pengembangan plugin DTS Islam');
+        View::load('credits', [
+            'title' => $title, 
+                'description' => $description
+        ]);
     }
-
 }

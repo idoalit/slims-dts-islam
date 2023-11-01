@@ -12,7 +12,7 @@ use DTSIslam\Lib\Url;
             <div class="btn-group">
                 <a href="<?= Url::adminSection('/merge'); ?>" class="btn btn-primary"><?= __('Merge subject'); ?></a>
                 <a href="<?= Url::adminSection('/use'); ?>" class="btn btn-success"><?= __('Use DTS Islam'); ?></a>
-                <a href="<?= Url::adminSection('/drop'); ?>" class="btn btn-danger"><?= __('Drop DTS Islam'); ?></a>
+                <!-- <a href="<?= Url::adminSection('/drop'); ?>" class="btn btn-danger"><?= __('Drop DTS Islam'); ?></a> -->
                 <a href="<?= Url::adminSection('/credits'); ?>" class="btn btn-info"><?= __('Credits'); ?></a>
             </div>
         </div>
