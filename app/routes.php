@@ -20,6 +20,7 @@
  *
  */
 
+use DTSIslam\App\Controllers\BiblioTopicController;
 use DTSIslam\App\Controllers\SubjectController;
 use DTSIslam\App\Controllers\WelcomeController;
 
@@ -30,9 +31,13 @@ $router = new \DTSIslam\Lib\Router();
 $router->get('/', [WelcomeController::class, 'index']);
 $router->get('/merge', [SubjectController::class, 'merge']);
 $router->get('/topic/count', [SubjectController::class, 'topicCount']);
+$router->get('/topic/our/count', [SubjectController::class, 'ourTopicCount']);
 $router->post('/topic/doMerge', [SubjectController::class, 'doMerge']);
 
 $router->get('/use', [SubjectController::class, 'use']);
+$router->get('/biblio/topic/count', [BiblioTopicController::class, 'getBiblioTopicCount']);
+$router->post('/biblio/topic/migrate', [BiblioTopicController::class, 'doMigrate']);
+
 $router->get('/drop', [SubjectController::class, 'drop']);
 $router->get('/credits', [WelcomeController::class, 'credits']);
 

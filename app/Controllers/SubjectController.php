@@ -10,6 +10,8 @@ use Idoalit\SlimsEloquentModels\Vocabulary;
 
 class SubjectController
 {
+    const AUTH_LIST = 'DTS Islam';
+
     function merge()
     {
         $title = __('Merge - DTS Islam');
@@ -21,6 +23,11 @@ class SubjectController
     {
         header('Content-type: application/json');
         echo json_encode(['data' => TmpTopic::count()]);
+    }
+
+    function ourTopicCount() {
+        header('Content-type: application/json');
+        echo json_encode(['data' => Topic::where('auth_list', self::AUTH_LIST)->count()]);
     }
 
     function doMerge()
@@ -85,7 +92,7 @@ class SubjectController
         $_topic = new Topic();
         $_topic->topic = $topic->topic;
         $_topic->topic_type = $topic->topic_type;
-        $_topic->auth_list = 'DTS Islam';
+        $_topic->auth_list = self::AUTH_LIST;
         $_topic->classification = $topic->classification;
         $_topic->input_date = date('Y-m-d');
         $_topic->last_update = null;

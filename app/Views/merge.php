@@ -28,10 +28,17 @@ include __DIR__ . '/header.php';
     class Merge {
         constructor() {
             this.topicCount = this.getTopicCount()
+            this.ourTopicCount = this.getOurTopicCount()
         }
 
         getTopicCount() {
             return fetch(`${baseUrl}topic/count`)
+                .then(res => res.json())
+                .then(res => res.data)
+        }
+
+        getOurTopicCount() {
+            return fetch(`${baseUrl}topic/our/count`)
                 .then(res => res.json())
                 .then(res => res.data)
         }
@@ -42,17 +49,25 @@ include __DIR__ . '/header.php';
             $('.progress-bar').css('width', '0.1%')
             for (let b = 1; b <= batch; b++) {
                 this.log(`Run for batch ${b} of ${batch}`)
-                const m = await fetch(`${baseUrl}topic/doMerge`, {
-                    method: 'post',
-                    body: JSON.stringify({
-                        batch: b,
-                        total: batch,
-                        perbatch: perBatch
+                try {
+                    const m = await fetch(`${baseUrl}topic/doMerge`, {
+                        method: 'post',
+                        body: JSON.stringify({
+                            batch: b,
+                            total: batch,
+                            perbatch: perBatch
+                        })
                     })
-                })
-                const r = await m.json()
-                console.log(r)
-                $('.progress-bar').css('width', ((b/batch)*100) + '%')
+                    const r = await m.json()
+
+                    // if any error
+                    r.error.map(m => this.log(m, true))
+
+                    $('.progress-bar').css('width', ((b / batch) * 100) + '%')
+                    this.log('Done!')
+                } catch (error) {
+                    this.log(error, true)
+                }
             }
 
             // finished
@@ -68,7 +83,8 @@ include __DIR__ . '/header.php';
 
     (async () => {
         const merge = new Merge()
-        merge.log(`Topic count: ${await merge.topicCount}`)
+        merge.log(`DTS Islam topics ~${await merge.topicCount}`)
+        merge.log(`Your DTS Islam topics ~${await merge.ourTopicCount}`)
 
         const btnMerge = $('.startMerging')
         btnMerge.click(async () => {
